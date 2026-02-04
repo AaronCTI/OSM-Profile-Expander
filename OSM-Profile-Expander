@@ -1,0 +1,13 @@
+javascript:(() => {
+  const DELAY=1500, LOOP=800;
+  const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+  console.log("[OSM] started");
+  setInterval(async () => {
+    const a=document.querySelector('a.page-link[href*="before="]');
+    if(!a) return console.log("[OSM] no link yet");
+    a.scrollIntoView({behavior:"smooth",block:"center"});
+    a.click();
+    await sleep(DELAY);
+    window.scrollBy({top:1200,behavior:"smooth"});
+  }, LOOP);
+})();
